@@ -73,17 +73,15 @@ test_file = st.sidebar.file_uploader("Upload Test Data", type=['csv'])
 # Training section
 if os.path.exists('best_model.pkl'):
     st.write("A trained model already exists. Reupload training data to retrain.")
-    st.write("Model artifacts:")
-    st.write("- best_model.pkl")
-    st.write("- median_dict.pkl")
-    st.write("- ohe.pkl")
-    st.write("- scaler.pkl")
-    st.write("- le.pkl")
+    st.write("Or upload test data to make predictions.")
+else:
+    # list the files in the current directory
+    st.write("No trained model found. Upload training data to train a model.")
+    st.write(os.listdir('.'))
 
 if train_file is not None:
     st.header("Training")
     train_button = st.button("Train Model")
-    
     if train_button:
         df = read_csv(train_file)
         st.write(f"Training data shape: {df.shape}")
