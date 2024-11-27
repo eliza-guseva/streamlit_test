@@ -150,7 +150,7 @@ def select_model(train_x, train_y, test_x, test_y):
     grid_search.fit(x_combined, y_combined)
     best_model = grid_search.best_estimator_
     print(f"Best params: {grid_search.best_params_} for accuracy {grid_search.best_score_}")
-    return best_model
+    return best_model, grid_search.best_params_, grid_search.best_score_
 
 def train_model(model, train_x, train_y):
     model.fit(train_x, train_y)

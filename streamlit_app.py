@@ -36,11 +36,11 @@ def train_pipeline(df):
         test_x, test_y = feature_engineere_all(test_x, test_y, categorical_cols, is_train=False)
         
         # Model selection and training
-        best_model = select_model(train_x, train_y, test_x, test_y)
+        best_model, best_params, best_score = select_model(train_x, train_y, test_x, test_y)
         # list parameters and metrics
-        st.write(f"Best model: {best_model}")   
-        st.write(f"Best model parameters: {best_model.best_params_}")
-        st.write(f"Best model metrics: {best_model.best_score_}")
+        st.write(f"Best model: {best_model}")
+        st.write(f"Best model parameters: {best_params}")
+        st.write(f"Best model accuracy: {best_score}")
         
         best_model = train_model(best_model, train_x, train_y)
         
