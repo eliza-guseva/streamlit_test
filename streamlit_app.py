@@ -14,6 +14,7 @@ from ml_functions import (
     categorical_cols,
     numerical_cols
 )
+import os
 
 st.title("Flight Satisfaction Predictor")
 
@@ -72,10 +73,18 @@ test_file = st.sidebar.file_uploader("Upload Test Data", type=['csv'])
 # Training section
 if train_file is not None:
     st.header("Training")
-    if st.button("Train Model"):
+    train_button = st.button("Train Model")
+    
+    model_exists = os.path.exists('best_model.pkl')
+    
+    if model_exists:
+        st.info("A trained model already exists. Click 'Train Model' to retrain.")
+    
+    if train_button:
         df = read_csv(train_file)
         st.write(f"Training data shape: {df.shape}")
         model = train_pipeline(df)
+        st.success("Model trained successfully!")
         st.write("Model artifacts saved:")
         st.write("- best_model.pkl")
         st.write("- median_dict.pkl")
