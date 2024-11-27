@@ -71,20 +71,18 @@ train_file = st.sidebar.file_uploader("Upload Training Data", type=['csv'])
 test_file = st.sidebar.file_uploader("Upload Test Data", type=['csv'])
 
 # Training section
+if os.path.exists('best_model.pkl'):
+    st.write("A trained model already exists. Reupload training data to retrain.")
+    st.write("Model artifacts:")
+    st.write("- best_model.pkl")
+    st.write("- median_dict.pkl")
+    st.write("- ohe.pkl")
+    st.write("- scaler.pkl")
+    st.write("- le.pkl")
+
 if train_file is not None:
     st.header("Training")
     train_button = st.button("Train Model")
-    
-    model_exists = os.path.exists('best_model.pkl')
-    
-    if model_exists:
-        st.write("A trained model already exists. Reupload training data to retrain.")
-        st.write("Model artifacts:")
-        st.write("- best_model.pkl")
-        st.write("- median_dict.pkl")
-        st.write("- ohe.pkl")
-        st.write("- scaler.pkl")
-        st.write("- le.pkl")
     
     if train_button:
         df = read_csv(train_file)
