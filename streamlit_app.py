@@ -78,7 +78,13 @@ if train_file is not None:
     model_exists = os.path.exists('best_model.pkl')
     
     if model_exists:
-        st.info("A trained model already exists. Click 'Train Model' to retrain.")
+        st.write("A trained model already exists. Reupload training data to retrain.")
+        st.write("Model artifacts:")
+        st.write("- best_model.pkl")
+        st.write("- median_dict.pkl")
+        st.write("- ohe.pkl")
+        st.write("- scaler.pkl")
+        st.write("- le.pkl")
     
     if train_button:
         df = read_csv(train_file)
