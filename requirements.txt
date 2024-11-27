@@ -1,0 +1,13 @@
+pandas
+scikit-learn
+seaborn
+statsmodels
+tensorflow
+setuptools
+wheel
+hyperopt
+flask
+streamlit
+
+# Optional: Include ipykernel if you want to use Jupyter notebooks
+# ipykernel
